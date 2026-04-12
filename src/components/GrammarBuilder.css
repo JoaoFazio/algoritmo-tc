@@ -211,6 +211,26 @@
 .step-sym.term { color: var(--accent-orange); }
 .step-sym.eps  { color: var(--accent-purple); font-style: italic; }
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .grammar-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+    padding: 14px;
+    gap: 16px;
+  }
+
+  .grammar-main {
+    overflow: visible;
+  }
+
+  .grammar-sidebar {
+    width: 100%;
+    overflow-y: visible;
+  }
+}
+
 /* ── Sidebar ── */
 .grammar-sidebar {
   width: 260px;

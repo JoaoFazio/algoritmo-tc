@@ -4,6 +4,10 @@
   width: 420px;
 }
 
+@media (max-width: 640px) {
+  .pda-modal { width: 100%; }
+}
+
 .pda-fields {
   display: flex;
   flex-direction: column;

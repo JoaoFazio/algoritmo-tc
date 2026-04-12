@@ -204,6 +204,34 @@
 }
 .add-trans-btn:hover { background: rgba(88,166,255,0.25); }
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .tm-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tm-main {
+    overflow: visible;
+  }
+
+  .tm-sidebar {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    overflow-y: visible;
+  }
+
+  .tm-tape { overflow-x: auto; }
+
+  .tm-controls { flex-wrap: wrap; }
+
+  .tm-table { font-size: 11px; }
+  .tm-table th, .tm-table td { padding: 5px 6px; }
+}
+
 /* ── Sidebar ── */
 .tm-sidebar {
   width: 240px;

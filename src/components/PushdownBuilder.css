@@ -149,6 +149,38 @@
 }
 .chip-sym { color: var(--accent-orange); }
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .pda-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .pda-center {
+    overflow: visible;
+    height: auto;
+  }
+
+  .pda-canvas-wrap {
+    height: 60vw;
+    min-height: 280px;
+    max-height: 60vh;
+    flex: none;
+    overflow: hidden;
+  }
+
+  .pda-panel {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    overflow-y: visible;
+  }
+
+  .pda-sim-bar { flex-wrap: wrap; }
+}
+
 /* ── Right panel ── */
 .pda-panel {
   width: 240px;

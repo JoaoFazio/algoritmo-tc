@@ -180,6 +180,29 @@
   background: rgba(248, 81, 73, 0.2);
 }
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .control-panel {
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    overflow-y: visible;
+  }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .tool-btn {
+    padding: 10px 8px;
+    justify-content: center;
+    gap: 6px;
+  }
+}
+
 /* ── Transform Buttons ── */
 .transform-btns {
   display: flex;

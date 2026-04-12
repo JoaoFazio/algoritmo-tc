@@ -56,6 +56,13 @@
 .sim-btn.reset:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
 .sim-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .sim-input-row { flex-wrap: wrap; }
+  .sim-label { display: none; }
+  .sim-input { min-width: 0; }
+}
+
 /* ── Tape ── */
 .tape-row {
   display: flex;

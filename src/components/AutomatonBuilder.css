@@ -51,6 +51,28 @@
   border-color: #30363d;
 }
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .builder-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .builder-center {
+    height: auto;
+    overflow: visible;
+  }
+
+  .canvas-wrapper {
+    height: 60vw;
+    min-height: 280px;
+    max-height: 60vh;
+    flex: none;
+    padding: 8px;
+  }
+}
+
 /* ── Zoom controls overlay ── */
 .canvas-zoom-controls {
   position: absolute;
