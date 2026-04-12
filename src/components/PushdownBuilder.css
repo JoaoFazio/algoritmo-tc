@@ -1,0 +1,212 @@
+/* ── PushdownBuilder.css ─────────────────────────────────────── */
+
+.pda-layout {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+.pda-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+}
+.pda-canvas-wrap {
+  flex: 1;
+  min-height: 0;        /* lets the canvas shrink so the sim-bar stays visible */
+  padding: 10px;
+  display: flex;
+  overflow: hidden;
+}
+.pda-canvas-wrap .automaton-canvas { width: 100%; height: 100%; }
+
+/* ── Sim bar ── */
+.pda-sim-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  flex-shrink: 0;   /* never collapse the sim bar */
+}
+.pda-input {
+  flex: 1;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  min-width: 120px;
+}
+.pda-run-btn {
+  padding: 7px 14px;
+  background: var(--accent-teal);
+  color: #0d1117;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+.pda-run-btn:hover { opacity: 0.85; }
+.pda-step-btn {
+  padding: 7px 12px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  transition: all var(--transition);
+}
+.pda-step-btn:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
+.pda-step-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.pda-step-counter {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.pda-reset-btn {
+  padding: 7px 12px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+.pda-reset-btn:hover:not(:disabled) { background: var(--bg-hover); }
+.pda-reset-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.pda-result {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  animation: fadeIn 0.2s ease;
+}
+.pda-result.accept { background: rgba(63,185,80,0.12); color: var(--accent-green); }
+.pda-result.reject { background: rgba(248,81,73,0.12); color: var(--accent-red); animation: shake 0.35s ease; }
+.pda-error { color: var(--accent-red); font-size: 12px; }
+
+/* ── Stack visualization ── */
+.stack-viz {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+}
+.stack-title {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.stack-cells {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.stack-cell {
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  background: var(--bg-elevated);
+  color: var(--accent-teal);
+  transition: all 0.2s;
+}
+.stack-cell.bottom {
+  color: var(--text-muted);
+  border-style: dashed;
+}
+
+/* ── Trace ── */
+.pda-trace {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px 14px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-base);
+  max-height: 60px;
+  overflow-y: auto;
+}
+.trace-chip {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.chip-sym { color: var(--accent-orange); }
+
+/* ── Right panel ── */
+.pda-panel {
+  width: 240px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+.pda-section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pda-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+.pda-tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 13px;
+  transition: all var(--transition);
+}
+.pda-tool-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.pda-tool-btn.active { background: rgba(88,166,255,0.15); color: var(--accent-blue); border: 1px solid rgba(88,166,255,0.3); }
+.pda-toggle {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-align: left;
+  transition: all var(--transition);
+}
+.pda-toggle:hover { background: var(--bg-hover); }
+.pda-toggle.on { background: rgba(88,166,255,0.1); color: var(--accent-blue); }
+.pda-toggle.on.accept { background: rgba(63,185,80,0.1); color: var(--accent-green); }
+.pda-hint { font-size: 11px; color: var(--text-muted); }
+.trans-list { display: flex; flex-direction: column; gap: 4px; }
+.trans-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.trans-text { font-size: 11px; color: var(--text-secondary); flex: 1; }
+.trans-del { font-size: 10px; color: var(--accent-red); background: transparent; padding: 2px 6px; }
+.trans-del:hover { background: rgba(248,81,73,0.1); border-radius: 3px; }
+.pda-example-btn { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--bg-elevated); text-align: left; transition: background var(--transition); }
+.pda-example-btn:hover { background: var(--bg-hover); }
+.pda-clear-btn { width: 100%; padding: 8px; border-radius: var(--radius-sm); background: rgba(248,81,73,0.1); color: var(--accent-red); font-size: 13px; }
+.pda-clear-btn:hover { background: rgba(248,81,73,0.2); }

@@ -1,0 +1,164 @@
+/* ── Simulator.css ─────────────────────────────────────────────── */
+
+.simulator {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+}
+
+.sim-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.sim-input {
+  flex: 1;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.sim-btn {
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.sim-btn.step {
+  background: rgba(88,166,255,0.15);
+  color: var(--accent-blue);
+  border: 1px solid rgba(88,166,255,0.3);
+}
+.sim-btn.step:hover:not(:disabled) { background: rgba(88,166,255,0.25); }
+.sim-btn.run {
+  background: var(--accent-teal);
+  color: #0d1117;
+  font-weight: 600;
+}
+.sim-btn.run:hover { opacity: 0.88; }
+.sim-btn.reset {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+.sim-btn.reset:hover:not(:disabled) { background: var(--bg-hover); color: var(--text-primary); }
+.sim-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Tape ── */
+.tape-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.tape-cell {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.tape-cell.past {
+  background: var(--bg-base);
+  color: var(--text-muted);
+  border-color: var(--text-muted);
+}
+.tape-cell.current {
+  background: rgba(88,166,255,0.15);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  font-weight: 700;
+  transform: scale(1.12);
+  animation: pulse 0.8s infinite;
+}
+.tape-cell.end {
+  color: var(--text-muted);
+  border-style: dashed;
+}
+
+/* ── Trace ── */
+.trace-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.trace-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  animation: slideIn 0.15s ease;
+}
+.trace-item.current .trace-state {
+  color: var(--accent-teal);
+  font-weight: 600;
+}
+.trace-sym {
+  color: var(--accent-orange);
+}
+.trace-arrow {
+  color: var(--text-muted);
+}
+.trace-state {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+/* ── Result Banner ── */
+.result-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  animation: fadeIn 0.25s ease;
+}
+.result-banner.accept {
+  background: rgba(63,185,80,0.12);
+  border: 1px solid rgba(63,185,80,0.35);
+  color: var(--accent-green);
+}
+.result-banner.reject {
+  background: rgba(248,81,73,0.12);
+  border: 1px solid rgba(248,81,73,0.35);
+  color: var(--accent-red);
+  animation: shake 0.35s ease;
+}
+.result-sub {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Error ── */
+.sim-error {
+  padding: 8px 12px;
+  background: rgba(248,81,73,0.1);
+  border: 1px solid rgba(248,81,73,0.3);
+  border-radius: var(--radius-sm);
+  color: var(--accent-red);
+  font-size: 13px;
+}

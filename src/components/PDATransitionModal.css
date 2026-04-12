@@ -1,0 +1,65 @@
+/* ── PDATransitionModal.css ──────────────────────────────────── */
+
+.pda-modal {
+  width: 420px;
+}
+
+.pda-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pda-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pda-field-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.quick-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.quick-btn {
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.quick-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.quick-btn.sel {
+  background: rgba(88,166,255,0.15);
+  color: var(--accent-blue);
+  border-color: rgba(88,166,255,0.4);
+}
+
+.quick-custom {
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  width: 70px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.pda-preview {
+  padding: 10px 12px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--accent-teal);
+  text-align: center;
+}

@@ -1,0 +1,351 @@
+/* ── ControlPanel.css ─────────────────────────────────────────── */
+.control-panel {
+  width: 260px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.panel-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.2s ease;
+}
+
+.panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.panel-input {
+  padding: 7px 10px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+.panel-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Type toggle ── */
+.type-toggle {
+  display: flex;
+  gap: 6px;
+}
+.type-btn {
+  flex: 1;
+  padding: 6px 0;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 13px;
+  transition: background var(--transition), color var(--transition);
+}
+.type-btn.active {
+  background: var(--accent-blue);
+  color: #fff;
+}
+.type-btn:hover:not(.active) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ── Toolbar ── */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+}
+.tool-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.tool-btn.active {
+  background: rgba(88, 166, 255, 0.15);
+  color: var(--accent-blue);
+  border: 1px solid rgba(88, 166, 255, 0.3);
+}
+.tool-icon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.tool-label {
+  font-size: 13px;
+}
+
+/* ── State Inspector ── */
+.state-inspector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.inspector-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.toggle-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.toggle-btn {
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  text-align: left;
+  font-size: 12px;
+  transition: background var(--transition), color var(--transition);
+}
+.toggle-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.toggle-btn.on {
+  background: rgba(88,166,255,0.1);
+  color: var(--accent-blue);
+}
+.toggle-btn.on.accept {
+  background: rgba(63,185,80,0.1);
+  color: var(--accent-green);
+}
+
+/* ── Examples ── */
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.example-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  text-align: left;
+  transition: background var(--transition);
+}
+.example-btn:hover {
+  background: var(--bg-hover);
+}
+.example-name {
+  font-size: 12px;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+.example-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Clear ── */
+.clear-btn {
+  width: 100%;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(248, 81, 73, 0.1);
+  color: var(--accent-red);
+  font-size: 13px;
+  transition: background var(--transition);
+}
+.clear-btn:hover {
+  background: rgba(248, 81, 73, 0.2);
+}
+
+/* ── Transform Buttons ── */
+.transform-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.transform-btn {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  transition: background var(--transition), opacity var(--transition), transform 0.1s ease;
+  letter-spacing: 0.01em;
+}
+.transform-btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+.transform-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.nfa-btn {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--accent-blue);
+  border: 1px solid rgba(88, 166, 255, 0.3);
+}
+.nfa-btn:hover:not(:disabled) {
+  background: rgba(88, 166, 255, 0.22);
+}
+.min-btn {
+  background: rgba(188, 140, 255, 0.12);
+  color: #bc8cff;
+  border: 1px solid rgba(188, 140, 255, 0.3);
+}
+.min-btn:hover:not(:disabled) {
+  background: rgba(188, 140, 255, 0.22);
+}
+
+/* ── ER Validation ── */
+.er-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.er-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+}
+.validate-btn {
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--transition), opacity var(--transition);
+}
+.validate-btn:hover:not(:disabled) {
+  background: #79b8ff;
+}
+.validate-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.validation-result {
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-size: 12px;
+  animation: fadeIn 0.2s ease;
+}
+.validation-result.ok {
+  background: rgba(63, 185, 80, 0.08);
+  border: 1px solid rgba(63, 185, 80, 0.3);
+}
+.validation-result.fail {
+  background: rgba(248, 81, 73, 0.08);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+}
+.val-ok {
+  color: var(--accent-green);
+  font-weight: 500;
+  line-height: 1.5;
+}
+.val-error {
+  color: var(--accent-orange, #f0883e);
+  font-weight: 500;
+}
+.val-fail-header {
+  color: var(--accent-red);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.val-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.val-table th {
+  text-align: center;
+  color: var(--text-secondary);
+  font-weight: 600;
+  padding: 3px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.val-table td {
+  text-align: center;
+  padding: 3px 6px;
+}
+.val-str {
+  text-align: left !important;
+}
+.val-str code {
+  font-size: 11px;
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.val-accept {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+.val-reject {
+  color: var(--accent-red);
+  font-weight: 700;
+}
+
+/* ── Trap State Analysis Badge ── */
+.val-trap {
+  margin-top: 8px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  line-height: 1.5;
+  animation: fadeIn 0.2s ease;
+}
+.val-trap-ok {
+  background: rgba(63, 185, 80, 0.08);
+  border: 1px solid rgba(63, 185, 80, 0.25);
+  color: var(--accent-green);
+}
+.val-trap-warn {
+  background: rgba(240, 136, 62, 0.08);
+  border: 1px solid rgba(240, 136, 62, 0.3);
+  color: var(--accent-orange, #f0883e);
+}
+.val-trap-list {
+  margin: 5px 0 0 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.val-trap-list li {
+  list-style: disc;
+}
+.val-trap-list code {
+  font-size: 11px;
+  background: rgba(255,255,255,0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+}

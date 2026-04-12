@@ -1,0 +1,114 @@
+/* ── TransitionModal.css ─────────────────────────────────────── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  width: 360px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.modal-state {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-teal);
+  font-weight: 600;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.symbol-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.symbol-opt {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.symbol-opt:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.symbol-opt.selected {
+  background: rgba(88,166,255,0.15);
+  color: var(--accent-blue);
+  border-color: rgba(88,166,255,0.4);
+}
+
+.symbol-custom {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  width: 80px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-cancel {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+.modal-cancel:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+.modal-confirm {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+.modal-confirm:hover:not(:disabled) { opacity: 0.85; }
+.modal-confirm:disabled { opacity: 0.4; cursor: not-allowed; }
