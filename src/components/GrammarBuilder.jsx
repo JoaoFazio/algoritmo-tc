@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { parseGrammar, deriveString, detectGrammarType, formatForm, GRAMMAR_EXAMPLES, EPSILON } from '../utils/grammar';
+import { erToGrammar } from '../utils/erToGrammar';
 import './GrammarBuilder.css';
 
 const DEFAULT_GRAMMAR = `S -> a S b | eps`;
@@ -9,6 +10,25 @@ export default function GrammarBuilder() {
   const [testString, setTestString]   = useState('aabb');
   const [result, setResult]           = useState(null);
   const [error, setError]             = useState(null);
+
+  const [erInput, setErInput]         = useState('');
+  const [erError, setErError]         = useState(null);
+  const [erSuccess, setErSuccess]     = useState(false);
+
+  const handleGenerateGR = useCallback(() => {
+    setErError(null);
+    setErSuccess(false);
+    const res = erToGrammar(erInput);
+    if (res.ok) {
+      setGrammarText(res.grammar);
+      setResult(null);
+      setError(null);
+      setErSuccess(true);
+      setTimeout(() => setErSuccess(false), 2000);
+    } else {
+      setErError(res.error);
+    }
+  }, [erInput]);
 
   const grammar = parseGrammar(grammarText);
   const grammarType = grammar.startSymbol ? detectGrammarType(grammar) : null;
@@ -37,6 +57,42 @@ export default function GrammarBuilder() {
     <div className="grammar-layout">
       {/* ── Left: editor + results ── */}
       <div className="grammar-main">
+
+        {/* ── ER → GR generator ── */}
+        <div className="er-gr-section">
+          <div className="er-gr-header">
+            <span className="er-gr-title">ER → Gramática Regular</span>
+            <span className="er-gr-badge">automático</span>
+          </div>
+          <p className="er-gr-desc">
+            Digite uma expressão regular e gere as regras de produção automaticamente.
+          </p>
+          <div className="er-gr-input-row">
+            <input
+              className="er-gr-input"
+              placeholder="ex: (a+b)*aa(a+b)*  ou  b a*  ou  abb(ccc)*"
+              value={erInput}
+              onChange={e => { setErInput(e.target.value); setErError(null); setErSuccess(false); }}
+              onKeyDown={e => e.key === 'Enter' && handleGenerateGR()}
+              spellCheck={false}
+            />
+            <button
+              className={`er-gr-btn ${erSuccess ? 'success' : ''}`}
+              onClick={handleGenerateGR}
+              disabled={!erInput.trim()}
+            >
+              {erSuccess ? '✓ Gerado' : '⚙ Gerar GR'}
+            </button>
+          </div>
+          <p className="er-gr-hint">
+            Use <code>+</code> para OR, <code>*</code> para Kleene star, <code>eps</code> para ε.
+            Concatenação é implícita.
+          </p>
+          {erError && (
+            <div className="er-gr-error">⚠ {erError}</div>
+          )}
+        </div>
+
         <div className="grammar-editor-area">
           <div className="editor-header">
             <span className="editor-title">Regras de Produção</span>
